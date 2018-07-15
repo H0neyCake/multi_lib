@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <ctime>
 #include <string>
+#include <сstring>
 #include <sstream>
 #include <time.h>
 #include <fstream>
-#include <windows.h>
 #include <algorithm>
 
 #define VERSION "v.0.1 | Created by DT.Cake"
@@ -17,11 +17,11 @@ __attribute__((dllexport)) int RVExtensionArgs(char *dest, int num, const char *
 __attribute__((dllexport)) void RVExtensionVersion(char *dest, int num);
 };
 
-void RVExtension(char *output, int outputSize, const char *function)
+void RVExtension(char *dest, int num, const char *fnc)
 {
-    std::string str = function;
+    std::string str = fnc;
 
-   if (!strncmp(function, "time", 2))
+   if (!strncmp(fnc, "time", 2))
    {
      time_t t = time(0);   // get time now
     struct tm * now = localtime( & t );
@@ -50,26 +50,26 @@ void RVExtension(char *output, int outputSize, const char *function)
 
     s += "]";
 
-    strncpy(output, s.c_str(), outputSize);
+    std::strncpy(dest, s.c_str(), num - 1);
   } 
-  else if (!strncmp(function, "about", 2)) 
+  else if (!strncmp(fnc, "about", 2)) 
   {
-    strncpy_s(output, outputSize, "Created by Cake from Dismal Team", outputSize - 1);
+    std::strncpy_s(output, num, "Created by Cake from Dismal Team", num - 1);
   }
   else
   {
-    strncpy_s(output, outputSize, "Avaliable Functions: time, logger, about", outputSize - 1);    
+    std::strncpy_s(dest, num, "Avaliable Functions: time, logger, about", num - 1);    
   }
 };
-int RVExtensionArgs(char *output, int outputSize, const char *function, const char **args, int argsCnt)
+int RVExtensionArgs(char *dest, int num, const char *fnc, const char **argv, int argc)
 {
-  if (!strncmp(function, "logger", 2))
+  if (!strncmp(fnc, "logger", 2))
   {
-    std::string fnc = args[0];
-    std::string ln = args[1];
-    std::string dir = args[2];
+    std::string logentry = argv[0];
+    std::string ln = argv[1];
+    std::string dir = argv[2];
     //Output it as the .dll result to arma 3
-  strncpy_s(output, outputSize, "Log created!", _TRUNCATE);
+  std::strncpy_s(dest, num, "Log created!", num - 1);
 
   //Get current Server Time for loggin
   time_t currentTime;
@@ -95,11 +95,11 @@ int RVExtensionArgs(char *output, int outputSize, const char *function, const ch
   logname.erase(remove( logname.begin(), logname.end(), '\"' ),logname.end());
 
   std::ofstream log(logname, std::ios_base::app | std::ios_base::out);
-  log << Day << "-" << Month << "-" << Year << " - " << Hour << ":" << Min << ":" << Sec << " :: " << fnc << "\n";
+  log << Day << "-" << Month << "-" << Year << " - " << Hour << ":" << Min << ":" << Sec << " :: " << logentry << "\n";
 }
   return 0;
 };
-void __stdcall RVExtensionVersion(char *output, int outputSize)
+void RVExtensionVersion(char *dest, int num)
 {
-    strncpy_s(output, outputSize, VERSION, _TRUNCATE);
+    std::strncpy_s(dest, VERSION, num - 1);
 };
