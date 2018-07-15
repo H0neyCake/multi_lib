@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ctime>
 #include <string>
-#include <сstring>
+#include <cstring>
 #include <sstream>
 #include <time.h>
 #include <fstream>
@@ -51,15 +51,7 @@ void RVExtension(char *dest, int num, const char *fnc)
     s += "]";
 
     std::strncpy(dest, s.c_str(), num - 1);
-  } 
-  else if (!strncmp(fnc, "about", 2)) 
-  {
-    std::strncpy_s(output, num, "Created by Cake from Dismal Team", num - 1);
-  }
-  else
-  {
-    std::strncpy_s(dest, num, "Avaliable Functions: time, logger, about", num - 1);    
-  }
+  }  
 };
 int RVExtensionArgs(char *dest, int num, const char *fnc, const char **argv, int argc)
 {
@@ -69,7 +61,7 @@ int RVExtensionArgs(char *dest, int num, const char *fnc, const char **argv, int
     std::string ln = argv[1];
     std::string dir = argv[2];
     //Output it as the .dll result to arma 3
-  std::strncpy_s(dest, num, "Log created!", num - 1);
+  strncpy(dest, "Log created!", num - 1);
 
   //Get current Server Time for loggin
   time_t currentTime;
@@ -101,5 +93,5 @@ int RVExtensionArgs(char *dest, int num, const char *fnc, const char **argv, int
 };
 void RVExtensionVersion(char *dest, int num)
 {
-    std::strncpy_s(dest, VERSION, num - 1);
+    std::strncpy(dest, VERSION, num - 1);
 };
