@@ -12,12 +12,9 @@
 using namespace std;
 extern "C"
 {
-   //--- Engine called on extension load 
-    __declspec (dllexport) void __stdcall RVExtensionVersion(char *output, int outputSize);
-    //--- STRING callExtension STRING
-    __declspec (dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function);  
-
-    __declspec (dllexport) int __stdcall RVExtensionArgs(char *output, int outputSize, const char *function, const char **args, int argsCnt);
+__attribute__((dllexport)) void RVExtension(char *dest, int num, const char *fnc);
+__attribute__((dllexport)) int RVExtensionArgs(char *dest, int num, const char *fnc, const char **argv, int argc);
+__attribute__((dllexport)) void RVExtensionVersion(char *dest, int num);
 };
 
 void RVExtension(char *output, int outputSize, const char *function)
@@ -64,7 +61,7 @@ void RVExtension(char *output, int outputSize, const char *function)
     strncpy_s(output, outputSize, "Avaliable Functions: time, logger, about", outputSize - 1);    
   }
 };
-int __stdcall RVExtensionArgs(char *output, int outputSize, const char *function, const char **args, int argsCnt)
+int RVExtensionArgs(char *output, int outputSize, const char *function, const char **args, int argsCnt)
 {
   if (!strncmp(function, "logger", 2))
   {
