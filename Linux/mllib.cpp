@@ -60,6 +60,14 @@ int RVExtensionArgs(char *dest, int num, const char *fnc, const char **argv, int
     std::string logentry = argv[0];
     std::string ln = argv[1];
     std::string dir = argv[2];
+
+    std::string kor = ("LOGS/");
+    CreateDirectoryA(kor.c_str(), NULL);
+
+  if (dir.size() <= 2)
+  { 
+     dir += kor;   
+  } 
     //Output it as the .dll result to arma 3
   strncpy(dest, "Log created!", num - 1);
 

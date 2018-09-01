@@ -6,6 +6,7 @@
 #include <fstream>
 #include <windows.h>
 #include <algorithm>
+#include <cstdio>
 
 #define VERSION "v.0.1 | Created by DT.Cake"
 
@@ -68,13 +69,24 @@ int __stdcall RVExtensionArgs(char *output, int outputSize, const char *function
 {
   if (!strncmp(function, "logger", 2))
   {
+
     std::string fnc = args[0];
     std::string ln = args[1];
     std::string dir = args[2];
+   
+    std::string kor = ("LOGS/");
+    CreateDirectoryA(kor.c_str(), NULL);
+
+  if (dir.size() <= 2)
+  { 
+     dir += kor;   
+  } 
+
     //Output it as the .dll result to arma 3
   strncpy_s(output, outputSize, "Log created!", _TRUNCATE);
 
   //Get current Server Time for loggin
+  
   time_t currentTime;
   struct tm *localTime;
 
@@ -99,6 +111,7 @@ int __stdcall RVExtensionArgs(char *output, int outputSize, const char *function
 
   std::ofstream log(logname, std::ios_base::app | std::ios_base::out);
   log << Day << "-" << Month << "-" << Year << " - " << Hour << ":" << Min << ":" << Sec << " :: " << fnc << "\n";
+
 }
   return 0;
 };
