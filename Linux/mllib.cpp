@@ -6,6 +6,7 @@
 #include <time.h>
 #include <fstream>
 #include <algorithm>
+#include <boost/filesystem.hpp>
 
 #define VERSION "v.0.1 | Created by DT.Cake"
 
@@ -59,13 +60,13 @@ int RVExtensionArgs(char *dest, int num, const char *fnc, const char **argv, int
   {
     std::string logentry = argv[0];
     std::string ln = argv[1];
-    std::string dir = argv[2];
+    std::string dir = argv[2]; 
 
-    std::string kor = ("LOGS/");
-    CreateDirectoryA(kor.c_str(), NULL);
-
+   	std::string kor = ("logs/");
+	  boost::filesystem::create_directories(kor.c_str());
+    
   if (dir.size() <= 2)
-  { 
+  { 	
      dir += kor;   
   } 
     //Output it as the .dll result to arma 3
