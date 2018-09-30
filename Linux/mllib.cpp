@@ -6,7 +6,6 @@
 #include <time.h>
 #include <fstream>
 #include <algorithm>
-#include <boost/filesystem.hpp>
 
 #define VERSION "v.0.1 | Created by DT.Cake"
 
@@ -69,15 +68,13 @@ int RVExtensionArgs(char *dest, int num, const char *fnc, const char **argv, int
   { 	
      dir += kor;   
   } 
-    //Output it as the .dll result to arma 3
   strncpy(dest, "Log created!", num - 1);
 
-  //Get current Server Time for loggin
   time_t currentTime;
   struct tm *localTime;
 
-  time(&currentTime);                   // Get the current time
-  localTime = localtime(&currentTime);  // Convert the current time to the local time
+  time(&currentTime);                  
+  localTime = localtime(&currentTime);
 
   //Convert them to strings
   string Day = to_string(localTime->tm_mday);
@@ -87,11 +84,7 @@ int RVExtensionArgs(char *dest, int num, const char *fnc, const char **argv, int
   string Min = to_string(localTime->tm_min);
   string Sec = to_string(localTime->tm_sec);
 
-  //Create Dir for Logging
-  // std::string dir = "D:\\A3Logs";
-  // CreateDirectoryA(dir, NULL);
   
-  //define the path and filename and log it.
   string logname = dir + "/" + ln + ".txt";
   logname.erase(remove( logname.begin(), logname.end(), '\"' ),logname.end());
 
