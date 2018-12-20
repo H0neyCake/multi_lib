@@ -17,6 +17,6 @@ Extension contains time and logger for arma 3.
 ## Compiling:
 1. Put .bat or .sh file in folder with .cpp file.
 2. Call this file thouhgt bash/terminal.
-3. Profit.
+3. Profit!
 
 *Also, its multi library, if you have some ideas what we can add, we wait you in Issues.*
