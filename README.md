@@ -11,7 +11,7 @@ Extension contains time and logger for arma 3.
 
 * `"mllib" callExtension "about";`
 
-*`"mllib" callExtension ["logger", ["logenry", "logname", "logdir"]]`
+* `"mllib" callExtension ["logger", ["logenry", "logname", "logdir"]]`
 // Creates a log with the specified arguments. If you want to create a log to the root, leave the last argument blank.
 
 ## Compiling:
