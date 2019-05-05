@@ -5,13 +5,13 @@ Extension contains time and logger for arma 3.
 
 ## Usage:
 
-* "mllib" callExtension ""; // general information about extension
+* `"mllib" callExtension ""; // general information about extension`
 
-* "mllib" callExtension "time"; // shows the system time of the computer in the format ['_year','_month','_day','_hour','_minute','_second','_weekday','_yearday','_dst'];
+* ```"mllib" callExtension "time"; // shows the system time of the computer in the format ['_year','_month','_day','_hour','_minute','_second','_weekday','_yearday','_dst'];```
 
-* "mllib" callExtension "about"; 
+* `"mllib" callExtension "about";`
 
-* "mllib" callExtension ["logger", ["logenry", "logname", "logdir"]]
+*`"mllib" callExtension ["logger", ["logenry", "logname", "logdir"]]`
 // Creates a log with the specified arguments. If you want to create a log to the root, leave the last argument blank.
 
 ## Compiling:
