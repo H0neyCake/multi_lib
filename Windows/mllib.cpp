@@ -101,10 +101,6 @@ int __stdcall RVExtensionArgs(char *output, int outputSize, const char *function
   string Min = to_string(localTime->tm_min);
   string Sec = to_string(localTime->tm_sec);
 
-  //Create Dir for Logging
-  // std::string dir = "D:\\A3Logs";
-  // CreateDirectoryA(dir, NULL);
-  
   //define the path and filename and log it.
   string logname = dir + "/" + ln + ".txt";
   logname.erase(remove( logname.begin(), logname.end(), '\"' ),logname.end());
